@@ -6,9 +6,18 @@ const app = express();
 
 app.use(cors());
 
+// Rota padrão
+app.get('/', (req, res) => {
+    res.json({ message: 'Bem-vindo ao servidor! Use /v1 para acessar o proxy.' });
+});
+
+// Configuração do proxy
 app.use('/v1', createProxyMiddleware({ 
     target: 'https://www.receitaws.com.br', 
-    changeOrigin: true 
+    changeOrigin: true,
+    onProxyRes: function (proxyRes, req, res) {
+        proxyRes.headers['content-type'] = 'application/json;charset=utf-8';
+    }
 }));
 
-module.exports = app; 
+module.exports = app;
