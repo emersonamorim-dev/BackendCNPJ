@@ -22,7 +22,7 @@ app.listen(port, () => {
 });
 
 // Configuração do proxy
-app.use('/v1', createProxyMiddleware({ 
+app.use('/v1/cnpj/{cnpj}', createProxyMiddleware({ 
     target: 'https://www.receitaws.com.br', 
     changeOrigin: true,
     onProxyRes: function (proxyRes, req, res) {
