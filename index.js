@@ -8,6 +8,7 @@ app.use(cors());
 
 app.get('/', (req, res) => {
     console.log('Acessando a rota base');
+    res.type('text/html');  // Definir o tipo de conteúdo explicitamente
     res.send('Server is running. Use /v1/cnpj/{cnpj} to access the CNPJ information.');
 });
 
@@ -24,8 +25,5 @@ app.use('/v1/cnpj', (req, res, next) => {
     logLevel: 'debug', 
 }));
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-});
-
 module.exports = app;
+
