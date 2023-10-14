@@ -13,5 +13,5 @@ app.use('/v1', createProxyMiddleware({
 
 const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on http://backend-cnpj.vercel.app:${PORT}`);
 });
