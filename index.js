@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 
 // Rota padrão
 app.get('/', (req, res) => {
-    res.json({ message: 'Bem-vindo ao servidor! Use /v1/cnpj/{cnpj} para acessar o proxy.' });
+    res.json({ message: 'Bem-vindo ao Backend Consulta de CNPJ!.' });
 });
 
 // Configuração do proxy
