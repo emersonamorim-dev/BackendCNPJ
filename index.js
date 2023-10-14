@@ -16,6 +16,12 @@ app.get('/', (req, res) => {
     res.send('Server is running. Use /v1/cnpj/{cnpj} to access the CNPJ information.');
 });
 
+app.get('/', (req, res) => {
+    const declaredVariable = "Teste!";
+    res.send(declaredVariable);
+});
+
+
 // Configuração do proxy
 app.use('/v1/cnpj', (req, res, next) => {
     console.log('Acessando a rota do proxy');
