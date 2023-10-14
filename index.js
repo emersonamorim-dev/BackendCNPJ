@@ -6,9 +6,17 @@ const app = express();
 
 app.use(cors());
 
-app.use('/v1', createProxyMiddleware({ 
-    target: 'https://www.receitaws.com.br', 
-    changeOrigin: true 
+app.get('/', (req, res) => {
+    res.send('Server is running. Use /v1/cnpj/{cnpj} to access the CNPJ information.');
+});
+
+// Configuração do proxy
+app.use('/v1/cnpj', createProxyMiddleware({ 
+    target: 'https://www.receitaws.com.br/v1/cnpj', 
+    changeOrigin: true,
+    pathRewrite: {
+        '^/v1/cnpj': '', 
+    },
 }));
 
 module.exports = app;
