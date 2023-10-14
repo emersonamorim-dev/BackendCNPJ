@@ -1,8 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const { createProxyMiddleware } = require('http-proxy-middleware');
-const port = process.env.PORT || 3000;
 
+const port = process.env.PORT || 3000;
 
 const app = express();
 
@@ -19,14 +18,6 @@ app.get('/', (req, res) => {
     res.json({ message: 'Bem-vindo ao servidor! Use /v1 para acessar o proxy.' });
 });
 
-// Configuração do proxy
-app.use('/v1', createProxyMiddleware({ 
-    target: 'https://www.receitaws.com.br', 
-    changeOrigin: true,
-    onProxyRes: function (proxyRes, req, res) {
-        proxyRes.headers['content-type'] = 'application/json;charset=utf-8';
-    }
-}));
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
