@@ -8,8 +8,7 @@
     "start": "node index.js"
   },
   "author": "",
-  "license": "ISC"
-},
+  "license": "ISC",
   "dependencies": {
     "json-server": "^0.17.0"
   }
