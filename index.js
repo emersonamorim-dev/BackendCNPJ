@@ -7,16 +7,25 @@ const app = express();
 app.use(cors());
 
 app.get('/', (req, res) => {
+    console.log('Acessando a rota base');
     res.send('Server is running. Use /v1/cnpj/{cnpj} to access the CNPJ information.');
 });
 
 // Configuração do proxy
-app.use('/v1/cnpj', createProxyMiddleware({ 
+app.use('/v1/cnpj', (req, res, next) => {
+    console.log('Acessando a rota do proxy');
+    next();
+}, createProxyMiddleware({ 
     target: 'https://www.receitaws.com.br/v1/cnpj', 
     changeOrigin: true,
     pathRewrite: {
         '^/v1/cnpj': '', 
     },
+    logLevel: 'debug', 
 }));
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
 
 module.exports = app;
