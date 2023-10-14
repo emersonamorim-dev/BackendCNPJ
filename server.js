@@ -11,7 +11,8 @@ app.use('/v1', createProxyMiddleware({
     changeOrigin: true 
 }));
 
-const PORT = 3000;
+// A Vercel define a porta na variável de ambiente `PORT`
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server is running on http://backend-cnpj.vercel.app:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
