@@ -1,6 +1,6 @@
 ## BackendCNPJ - Consulta de CNPJ 🚀 🔄 🌐
 
-Codificação de uma aplicação Node.js que utiliza o framework Express para criar Backend em para Consulta de CNPJ. Ele também utiliza o middleware http-proxy-middleware para criar um proxy que redireciona 
+Codificação de uma aplicação Node.js que utiliza o framework Express para criar Backend para Consulta de CNPJ. Ele também utiliza o middleware http-proxy-middleware para criar um proxy que redireciona 
 requisições para uma API externa. A aplicação é particularmente útil para contornar as restrições de CORS (Cross-Origin Resource Sharing) ao acessar APIs de domínios diferentes.
 
 ### Como Funciona
