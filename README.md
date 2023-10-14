@@ -23,7 +23,7 @@ Rota Padrão:
   
 #### Configuração do Proxy:
 
-- O middleware de proxy é configurado para interceptar requisições feitas para /v1/cnpj/:cnpj e redirecioná-las para a API externa https://www.receitaws.com.br/v1/cnpj.
+- O middleware de proxy é configurado para interceptar requisições feitas para /v1/cnpj/:cnpj e redirecioná-las para a API externa https://backend-cnpj.vercel.app/v1/cnpj/SEUCNPJ
 - O método changeOrigin é definido como true para garantir que o host da API externa seja virtualizado, permitindo que o proxy funcione corretamente.
 - O método pathRewrite é utilizado para reescrever a URL da requisição, removendo a parte /v1/cnpj da URL antes de redirecioná-la para a API externa.
 - O método onProxyRes é utilizado para garantir que o cabeçalho Content-Type da resposta seja definido como application/json;charset=utf-8.
