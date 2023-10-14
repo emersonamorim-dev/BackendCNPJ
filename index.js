@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const { createProxyMiddleware } = require('http-proxy-middleware');
+const port = process.env.PORT || 3000;
+
 
 const app = express();
 
@@ -25,5 +27,9 @@ app.use('/v1', createProxyMiddleware({
         proxyRes.headers['content-type'] = 'application/json;charset=utf-8';
     }
 }));
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
 
 module.exports = app;
