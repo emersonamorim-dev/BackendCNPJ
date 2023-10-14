@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const port = process.env.PORT || 3000;
+
 const app = express();
 
 app.use(cors());
@@ -14,21 +14,21 @@ app.use((req, res, next) => {
 
 // Rota padrão
 app.get('/', (req, res) => {
-    res.json({ message: 'Bem-vindo ao servidor! Use /v1 para acessar o proxy.' });
-});
-
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+    res.json({ message: 'Bem-vindo ao servidor! Use /v1/cnpj/{cnpj} para acessar o proxy.' });
 });
 
 // Configuração do proxy
-app.use('/v1/cnpj/{cnpj}', createProxyMiddleware({ 
-    target: 'https://www.receitaws.com.br', 
+app.use('/v1/cnpj/:cnpj', createProxyMiddleware({ 
+    target: 'https://www.receitaws.com.br/v1/cnpj', 
     changeOrigin: true,
+    pathRewrite: {
+        '^/v1/cnpj': '', 
+    },
     onProxyRes: function (proxyRes, req, res) {
         proxyRes.headers['content-type'] = 'application/json;charset=utf-8';
     }
 }));
 
 module.exports = app;
+
 
